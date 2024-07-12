@@ -8,10 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class PersonalInfoFormComponent {
   @Output() nextStep = new EventEmitter<void>();
 
-  // Your existing code...
-
-  onSubmit() {
-    // Validate form...
+  goToNextStep() {
     this.nextStep.emit();
   }
 }

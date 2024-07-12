@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { PersonalInfoFormComponent } from './components/personal-info-form/personal-info-form.component';
 import { StepsComponent } from './components/steps/steps.component';
 import { SelectPlanComponent } from './components/select-plan/select-plan.component';
+import { AddOnsComponent } from './components/add-ons/add-ons.component';
+import { SummaryComponent } from './components/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { SelectPlanComponent } from './components/select-plan/select-plan.compon
     PersonalInfoFormComponent,
     StepsComponent,
     SelectPlanComponent,
+    AddOnsComponent,
+    SummaryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

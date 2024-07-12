@@ -9,4 +9,6 @@
     (previousStep)="goToPreviousStep()"
     (nextStep)="goToNextStep()"
   ></app-select-plan>
+   <app-add-ons *ngIf="currentStep === 3" (previousStep)="goToPreviousStep()" (nextStep)="goToNextStep()"></app-add-ons>
 </div>
+
