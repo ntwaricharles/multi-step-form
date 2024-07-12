@@ -1,23 +1,33 @@
-<fieldset class="flex flex-col gap-20 p-4">
-  <div class="flex flex-col gap-1 relative">
-    <label for="name" class="text-marine-blue font-medium">Name</label>
-    <input id="name" placeholder="e.g. Stephen King"
-      class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
-    />
-    <p class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">Error message for Name</p>
+<div class="flex flex-col items-center md:items-start p-4 md:p-8 bg-white rounded-lg shadow-lg md:ml-4 md:mt-8">
+  <h1 class="text-2xl font-bold text-marine-blue">Personal info</h1>
+  <p class="text-cool-gray mb-8">Please provide your name, email address, and phone number.</p>
+  
+  <fieldset class="flex flex-col gap-6 w-full md:w-96">
+    <div class="flex flex-col gap-1 relative">
+      <label for="name" class="text-marine-blue font-medium">Name</label>
+      <input id="name" placeholder="e.g. Stephen King"
+        class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
+      />
+      <p class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
+    </div>
+    <div class="flex flex-col gap-1 relative">
+      <label for="email" class="text-marine-blue font-medium">Email Address</label>
+      <input id="email" placeholder="e.g. stephenking@lorem.com" type="email"
+        class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
+      />
+      <p class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
+    </div>
+    <div class="flex flex-col gap-1 relative">
+      <label for="number" class="text-marine-blue font-medium">Phone Number</label>
+      <input id="number" placeholder="e.g. +1 234 567 890"
+        class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
+      />
+      <p class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
+    </div>
+  </fieldset>
+  
+  <div class="flex justify-between items-center mt-8 w-full">
+    <button class="text-cool-gray font-medium">Go Back</button>
+    <button class="bg-marine-blue text-white py-2 px-6 rounded-lg font-medium">Next Step</button>
   </div>
-  <div class="flex flex-col gap-1 relative">
-    <label for="email" class="text-marine-blue font-medium">Email Address</label>
-    <input id="email" placeholder="e.g. stephenking@lorem.com" type="email"
-      class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
-    />
-    <p class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">Error message for Email</p>
-  </div>
-  <div class="flex flex-col gap-1 relative">
-    <label for="number" class="text-marine-blue font-medium">Phone Number</label>
-    <input id="number" placeholder="e.g. +1 234 567 890"
-      class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
-    />
-    <p class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">Error message for Phone Number</p>
-  </div>
-</fieldset>
+</div>
