@@ -1,32 +1,34 @@
-<div class="flex flex-col items-center md:items-start p-4 md: bg-white shadow-lg">
+<div class="flex flex-col items-center md:items-start p-4 md:bg-white shadow-lg">
   <h1 class="text-2xl font-bold text-marine-blue">Personal info</h1>
   <p class="text-cool-gray mb-8">Please provide your name, email address, and phone number.</p>
   
-  <fieldset class="flex flex-col gap-6 w-full md:w-96">
-    <div class="flex flex-col gap-1 relative">
+  <form [formGroup]="personalInfoForm" class="w-full md:w-96">
+    <div class="flex flex-col gap-1 relative mb-6">
       <label for="name" class="text-marine-blue font-medium">Name</label>
-      <input id="name" placeholder="e.g. Stephen King"
+      <input id="name" formControlName="name" placeholder="e.g. Stephen King"
         class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
       />
-      <p class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
+      <p *ngIf="name!.invalid && (name!.dirty || name!.touched)"
+         class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
     </div>
-    <div class="flex flex-col gap-1 relative">
+    <div class="flex flex-col gap-1 relative mb-6">
       <label for="email" class="text-marine-blue font-medium">Email Address</label>
-      <input id="email" placeholder="e.g. stephenking@lorem.com" type="email"
+      <input id="email" formControlName="email" placeholder="e.g. stephenking@lorem.com" type="email"
         class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
       />
-      <p class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
+      <p *ngIf="email!.invalid && (email!.dirty || email!.touched)"
+         class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
     </div>
-    <div class="flex flex-col gap-1 relative">
+    <div class="flex flex-col gap-1 relative mb-6">
       <label for="number" class="text-marine-blue font-medium">Phone Number</label>
-      <input id="number" placeholder="e.g. +1 234 567 890"
+      <input id="number" formControlName="phoneNumber" placeholder="e.g. +1 234 567 890"
         class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
       />
-      <p class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
+      <p *ngIf="phoneNumber!.invalid && (phoneNumber!.dirty || phoneNumber!.touched)"
+         class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
     </div>
-  </fieldset>
-  
-  <div class="flex justify-end items-center mt-8 w-full">
-     <button class="bg-marine-blue text-white py-2 px-6 rounded-lg font-medium" (click)="goToNextStep()">Next Step</button>
-  </div>
+    <div class="flex justify-end items-center mt-8 w-full">
+      <button type="button" class="bg-marine-blue text-white py-2 px-6 rounded-lg font-medium" (click)="goToNextStep()">Next Step</button>
+    </div>
+  </form>
 </div>
