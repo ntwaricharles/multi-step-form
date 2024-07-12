@@ -1,6 +1,6 @@
 module.exports = {
   content: [
-    "./src/**/*.{html,ts}",  // Ensure this path matches your project structure
+    "./src/**/*.{html,ts}", 
   ],
   theme: {
     extend: {
