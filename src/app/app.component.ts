@@ -3,8 +3,16 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'multi-step-form';
+  currentStep: number = 1;
+
+  goToNextStep() {
+    this.currentStep += 1;
+  }
+
+  goToPreviousStep() {
+    this.currentStep -= 1;
+  }
 }
