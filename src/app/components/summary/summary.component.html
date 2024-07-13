@@ -1,27 +1,24 @@
-<div class="flex flex-col bg-white p-6 rounded-lg shadow-lg w-full md:max-w-2xl md:h-[100%]">
+<div class="flex flex-col bg-white p-6 rounded-lg w-full md:max-w-2xl md:h-[100%]">
   <h1 class="text-2xl font-bold text-marine-blue mb-2">Finishing up</h1>
   <p class="text-cool-gray mb-8">Double-check everything looks OK before confirming.</p>
-  <div class="bg-magnolia p-4 rounded-lg mb-4">
-    <div class="flex justify-between items-center mb-4">
+  <div class="flex flex-col gap-4">
+    <div class="flex justify-between items-center border-b py-4">
       <div>
-        <p class="font-bold text-marine-blue">{{ plan }} ({{ period ? 'Yearly' : 'Monthly' }})</p>
-        <button class="text-cool-gray underline" (click)="goBack()">Change</button>
+        <p class="font-bold text-marine-blue">{{ plan | titlecase }} ({{ period ? 'Yearly' : 'Monthly' }})</p>
+        <a class="text-cool-gray underline cursor-pointer" (click)="goBack()">Change</a>
       </div>
       <p class="font-bold text-marine-blue">{{ getPlanPrice() }}</p>
     </div>
-    <div *ngFor="let addOn of addOns" class="flex justify-between items-center mb-2" 
-         [ngIf]="addOn.selected">
+    <div *ngFor="let addOn of getSelectedAddOns()" class="flex justify-between items-center py-4">
       <p class="text-cool-gray">{{ addOn.name }}</p>
-      <p class="text-marine-blue">{{ addOn.price }}</p>
+      <p class="font-bold text-marine-blue">{{ period ? addOn.yearlyPrice : addOn.monthlyPrice }}</p>
     </div>
   </div>
-  <div class="flex justify-between items-center font-bold text-marine-blue">
-    <p>Total (per {{ period ? 'year' : 'month' }})</p>
-    <p>{{ getTotalPrice() }}</p>
+  <div class="flex justify-between items-center mt-8 border-t py-4">
+    <p class="text-cool-gray">Total (per {{ period ? 'year' : 'month' }})</p>
+    <p class="font-bold text-purplish-blue">{{ totalPrice }}</p>
   </div>
-  <div class="flex justify-between items-center mt-8 w-full">
-    <button class="text-cool-gray font-medium" (click)="goBack()">Go Back</button>
-    <button class="bg-marine-blue text-white py-2 px-6 rounded-lg font-medium" 
-            (click)="finishSignup()">Confirm</button>
+  <div class="flex justify-end items-center mt-8 w-full">
+    <button class="bg-marine-blue text-white py-2 px-6 rounded-lg font-medium" (click)="confirmOrder()">Confirm</button>
   </div>
 </div>

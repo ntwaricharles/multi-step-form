@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { PricingService } from '../../pricing.service';
 
 @Component({
@@ -7,27 +7,34 @@ import { PricingService } from '../../pricing.service';
   styleUrls: ['./summary.component.css'],
 })
 export class SummaryComponent {
-  @Input() plan: string = '';
+  @Input() plan: string = 'arcade';
   @Input() period: boolean = false;
-  @Input() addOns: { name: string; price: string; selected: boolean }[] = [];
+  @Input() addOns: {
+    name: string;
+    monthlyPrice: string;
+    yearlyPrice: string;
+    description: string;
+    selected: boolean;
+  }[] = [];
+  @Input() totalPrice: string = '';
+  @Output() previousStep = new EventEmitter<void>();
+  @Output() finish = new EventEmitter<void>();
 
   constructor(private pricingService: PricingService) {}
 
-  getPlanPrice(): string {
-    return this.pricingService.getPlanPrice(this.period);
+  getPlanPrice() {
+    return this.pricingService.getPlanPrice(this.period, this.plan);
   }
 
-  getTotalPrice(): string {
-    return this.pricingService.getTotalPrice(this.period, this.addOns);
+  getSelectedAddOns() {
+    return this.addOns.filter((addOn) => addOn.selected);
   }
 
   goBack() {
-    // Emit event to go back
-    // this.previousStep.emit();
+    this.previousStep.emit();
   }
 
-  finishSignup() {
-    // Emit event to finish signup
-    // this.finish.emit();
+  confirmOrder() {
+    this.finish.emit();
   }
 }
