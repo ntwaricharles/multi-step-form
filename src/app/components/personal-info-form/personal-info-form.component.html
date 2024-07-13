@@ -1,14 +1,14 @@
-<div class="flex flex-col items-center md:items-start p-4 md:bg-white shadow-lg">
-  <h1 class="text-2xl font-bold text-marine-blue">Personal info</h1>
+<div class="flex flex-col items-center md:items-start p-4 bg-white shadow-lg w-full md:w-96 md:max-h-[90%]">
+  <h1 class="text-2xl font-bold text-marine-blue mb-2">Personal info</h1>
   <p class="text-cool-gray mb-8">Please provide your name, email address, and phone number.</p>
   
-  <form [formGroup]="personalInfoForm" class="w-full md:w-96">
+  <form [formGroup]="personalInfoForm" class="w-full">
     <div class="flex flex-col gap-1 relative mb-6">
       <label for="name" class="text-marine-blue font-medium">Name</label>
       <input id="name" formControlName="name" placeholder="e.g. Stephen King"
         class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
       />
-      <p *ngIf="name!.invalid && (name!.dirty || name!.touched)"
+      <p *ngIf="personalInfoForm.controls['name'].invalid && (personalInfoForm.controls['name'].dirty || personalInfoForm.controls['name'].touched)"
          class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
     </div>
     <div class="flex flex-col gap-1 relative mb-6">
@@ -16,7 +16,7 @@
       <input id="email" formControlName="email" placeholder="e.g. stephenking@lorem.com" type="email"
         class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
       />
-      <p *ngIf="email!.invalid && (email!.dirty || email!.touched)"
+      <p *ngIf="personalInfoForm.controls['email'].invalid && (personalInfoForm.controls['email'].dirty || personalInfoForm.controls['email'].touched)"
          class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
     </div>
     <div class="flex flex-col gap-1 relative mb-6">
@@ -24,7 +24,7 @@
       <input id="number" formControlName="phoneNumber" placeholder="e.g. +1 234 567 890"
         class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
       />
-      <p *ngIf="phoneNumber!.invalid && (phoneNumber!.dirty || phoneNumber!.touched)"
+      <p *ngIf="personalInfoForm.controls['phoneNumber'].invalid && (personalInfoForm.controls['phoneNumber'].dirty || personalInfoForm.controls['phoneNumber'].touched)"
          class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
     </div>
     <div class="flex justify-end items-center mt-8 w-full">

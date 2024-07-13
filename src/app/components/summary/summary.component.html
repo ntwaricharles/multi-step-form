@@ -1,1 +1,27 @@
-<p>summary works!</p>
+<div class="flex flex-col bg-white p-6 rounded-lg shadow-lg w-full md:max-w-2xl md:h-[100%]">
+  <h1 class="text-2xl font-bold text-marine-blue mb-2">Finishing up</h1>
+  <p class="text-cool-gray mb-8">Double-check everything looks OK before confirming.</p>
+  <div class="bg-magnolia p-4 rounded-lg mb-4">
+    <div class="flex justify-between items-center mb-4">
+      <div>
+        <p class="font-bold text-marine-blue">{{ plan }} ({{ period ? 'Yearly' : 'Monthly' }})</p>
+        <button class="text-cool-gray underline" (click)="goBack()">Change</button>
+      </div>
+      <p class="font-bold text-marine-blue">{{ getPlanPrice() }}</p>
+    </div>
+    <div *ngFor="let addOn of addOns" class="flex justify-between items-center mb-2" 
+         [ngIf]="addOn.selected">
+      <p class="text-cool-gray">{{ addOn.name }}</p>
+      <p class="text-marine-blue">{{ addOn.price }}</p>
+    </div>
+  </div>
+  <div class="flex justify-between items-center font-bold text-marine-blue">
+    <p>Total (per {{ period ? 'year' : 'month' }})</p>
+    <p>{{ getTotalPrice() }}</p>
+  </div>
+  <div class="flex justify-between items-center mt-8 w-full">
+    <button class="text-cool-gray font-medium" (click)="goBack()">Go Back</button>
+    <button class="bg-marine-blue text-white py-2 px-6 rounded-lg font-medium" 
+            (click)="finishSignup()">Confirm</button>
+  </div>
+</div>

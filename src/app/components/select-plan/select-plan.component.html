@@ -1,4 +1,4 @@
-<div class="flex flex-col bg-white p-6 rounded-lg shadow-lg w-full md:max-w-2xl">
+<div class="flex flex-col bg-white p-6 rounded-lg shadow-lg w-full md:max-w-2xl md:max-h-[100%]">
   <h1 class="text-2xl font-bold text-marine-blue mb-2">Select your plan</h1>
   <p class="text-cool-gray mb-8">You have the option of monthly or yearly billing.</p>
   <div class="flex flex-col md:flex-row md:gap-4">
@@ -27,8 +27,8 @@
   <div class="flex items-center justify-between mt-6">
     <div class="flex items-center space-x-4">
       <span class="text-cool-gray">Monthly</span>
-      <button type="button" class="bg-gray-300 rounded-full p-1 relative" (click)="togglePeriod()">
-        <span class="block w-6 h-6 bg-white rounded-full transform transition-transform duration-200 ease-in-out" [class.translate-x-6]="period"></span>
+      <button type="button" class="bg-marine-blue rounded-full p-1 relative" (click)="togglePeriod()">
+        <span class="block w-6 h-6 bg-purplish-blue rounded-full transform transition-transform duration-200 ease-in-out" [class.translate-x-6]="period"></span>
       </button>
       <span class="text-cool-gray">Yearly</span>
     </div>

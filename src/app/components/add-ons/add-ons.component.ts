@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-add-ons',
@@ -6,24 +6,38 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./add-ons.component.css'],
 })
 export class AddOnsComponent {
+  @Input() addOns!: {
+    name: string;
+    monthlyPrice: string;
+    yearlyPrice: string;
+    description: string;
+    selected: boolean;
+  }[];
+
+  @Input() period!: boolean;
+
   @Output() previousStep = new EventEmitter<void>();
   @Output() nextStep = new EventEmitter<void>();
-
-  addOns: { name: string; price: string; selected: boolean }[] = [
-    { name: 'Online service', price: '$1/mo', selected: false },
-    { name: 'Larger storage', price: '$2/mo', selected: false },
-    { name: 'Customizable profile', price: '$2/mo', selected: false },
-  ];
+  @Output() addOnsChange = new EventEmitter<
+    {
+      name: string;
+      monthlyPrice: string;
+      yearlyPrice: string;
+      description: string;
+      selected: boolean;
+    }[]
+  >();
 
   toggleAddOn(index: number) {
     this.addOns[index].selected = !this.addOns[index].selected;
-  }
-
-  goBack() {
-    this.previousStep.emit();
+    this.addOnsChange.emit(this.addOns);
   }
 
   goToNextStep() {
     this.nextStep.emit();
+  }
+
+  goBack() {
+    this.previousStep.emit();
   }
 }

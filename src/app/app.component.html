@@ -1,14 +1,67 @@
-<div class="flex flex-col md:flex-row md:justify-center md: items-center h-screen md:bg-light-blue">
-  <app-steps></app-steps>
-  <app-personal-info-form
-    *ngIf="currentStep === 1"
-    (nextStep)="goToNextStep()"
-  ></app-personal-info-form>
-  <app-select-plan
-    *ngIf="currentStep === 2"
-    (previousStep)="goToPreviousStep()"
-    (nextStep)="goToNextStep()"
-  ></app-select-plan>
-   <app-add-ons *ngIf="currentStep === 3" (previousStep)="goToPreviousStep()" (nextStep)="goToNextStep()"></app-add-ons>
-</div>
+<div class="h-screen bg-light-blue flex justify-center items-center">
+  <div class="h-[80%] flex flex-col md:flex-row bg-white p-6 rounded-lg shadow-lg w-full md:max-w-4xl">
+    <!-- Steps Section -->
+    <section class="flex flex-col items-center md:items-start md:w-1/4 bg-[url('/assets/images/bg-sidebar-mobile.svg')] md:bg-[url('/assets/images/bg-sidebar-desktop.svg')] bg-cover bg-no-repeat p-6">
+      <div class="flex flex-row gap-x-7 items-center md:items-start gap-y-4 md:flex-col">
+        <div class="flex items-center gap-x-4 md:gap-x-2">
+          <div class="w-8 h-8 flex items-center justify-center rounded-full border border-white text-white font-medium">1</div>
+          <div class="hidden md:block">
+            <p class="uppercase text-sm">Step 1</p>
+            <p class="uppercase text-white text-sm font-bold tracking-wide">Your info</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-x-4 md:gap-x-2">
+          <div class="w-8 h-8 flex items-center justify-center rounded-full border border-white text-white font-medium">2</div>
+          <div class="hidden md:block">
+            <p class="uppercase text-sm">Step 2</p>
+            <p class="uppercase text-white text-sm font-bold tracking-wide">Select plan</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-x-4 md:gap-x-2">
+          <div class="w-8 h-8 flex items-center justify-center rounded-full border border-white text-white font-medium">3</div>
+          <div class="hidden md:block">
+            <p class="uppercase text-sm">Step 3</p>
+            <p class="uppercase text-white text-sm font-bold tracking-wide">Add-ons</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-x-4 md:gap-x-2">
+          <div class="w-8 h-8 flex items-center justify-center rounded-full border border-white text-white font-medium">4</div>
+          <div class="hidden md:block">
+            <p class="uppercase text-sm">Step 4</p>
+            <p class="uppercase text-white text-sm font-bold tracking-wide">Summary</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- Form Section -->
+    <div class="flex flex-col w-full md:w-3/4  md:items-center justify-center">
+      <app-personal-info-form
+        *ngIf="currentStep === 1"
+        (nextStep)="goToNextStep()"
+        class="form-container"
+      ></app-personal-info-form>
+      <app-select-plan
+        *ngIf="currentStep === 2"
+        (previousStep)="goToPreviousStep()"
+        (nextStep)="goToNextStep()"
+        class="form-container"
+      ></app-select-plan>
+      <app-add-ons
+        *ngIf="currentStep === 3"
+        (previousStep)="goToPreviousStep()"
+        (nextStep)="goToNextStep()"
+        class="form-container"
+      ></app-add-ons>
+      <app-summary
+        *ngIf="currentStep === 4"
+        (previousStep)="goToPreviousStep()"
+        (finish)="finishSignup()"
+        [plan]="plan"
+        [period]="period"
+        [addOns]="addOns"
+        class="form-container"
+      ></app-summary>
+    </div>
+  </div>
+</div>

@@ -31,7 +31,6 @@ export class PersonalInfoFormComponent {
   }
 
   goToNextStep() {
-    // Check if the form is valid before emitting next step
     if (this.personalInfoForm.valid) {
       this.nextStep.emit();
     } else {
