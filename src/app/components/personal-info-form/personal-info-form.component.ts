@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import necessary form modules
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
 
 @Component({
   selector: 'app-personal-info-form',
@@ -9,11 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import n
 export class PersonalInfoFormComponent {
   @Output() nextStep = new EventEmitter<void>();
 
-  personalInfoForm: FormGroup; // Declare FormGroup for the form
+  personalInfoForm: FormGroup; 
 
   constructor(private formBuilder: FormBuilder) {
     this.personalInfoForm = this.formBuilder.group({
-      name: ['', Validators.required], // Set validators for each field
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', Validators.required],
     });
@@ -34,7 +34,6 @@ export class PersonalInfoFormComponent {
     if (this.personalInfoForm.valid) {
       this.nextStep.emit();
     } else {
-      // Mark all fields as touched to display errors
       this.personalInfoForm.markAllAsTouched();
     }
   }
