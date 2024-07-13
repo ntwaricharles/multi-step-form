@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PricingService } from './services/pricing.service';
 
 @Component({
   selector: 'app-root',
@@ -7,25 +8,57 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   currentStep: number = 1;
-
-  plan: string = 'arcade';
   period: boolean = false;
-  addOns: { name: string; price: string; selected: boolean }[] = [
-    { name: 'Online service', price: '$1/mo', selected: false },
-    { name: 'Larger storage', price: '$2/mo', selected: false },
-    { name: 'Customizable profile', price: '$2/mo', selected: false },
+  plan: string = 'arcade';
+  addOns: {
+    name: string;
+    monthlyPrice: string;
+    yearlyPrice: string;
+    description: string;
+    selected: boolean;
+  }[] = [
+    {
+      name: 'Online service',
+      monthlyPrice: '$1/mo',
+      yearlyPrice: '$10/yr',
+      description: 'Access to multiplayer games',
+      selected: false,
+    },
+    {
+      name: 'Larger storage',
+      monthlyPrice: '$2/mo',
+      yearlyPrice: '$20/yr',
+      description: 'Extra 1TB of cloud save',
+      selected: false,
+    },
+    {
+      name: 'Customizable profile',
+      monthlyPrice: '$2/mo',
+      yearlyPrice: '$20/yr',
+      description: 'Custom theme on your profile',
+      selected: false,
+    },
   ];
 
+  constructor(private pricingService: PricingService) {}
+
+  getTotalPrice() {
+    return this.pricingService.getTotalPrice(
+      this.period,
+      this.plan,
+      this.addOns
+    );
+  }
+
   goToNextStep() {
-    this.currentStep += 1;
+    this.currentStep++;
   }
 
   goToPreviousStep() {
-    this.currentStep -= 1;
+    this.currentStep--;
   }
 
   finishSignup() {
-    // Finalize signup process
-    console.log('Signup finished');
+    // Handle order confirmation logic here
   }
 }

@@ -1,17 +1,35 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { PricingService } from '../../services/pricing.service';
 
 @Component({
-  selector: 'app-steps',
-  templateUrl: './steps.component.html',
-  styleUrls: ['./steps.component.css'],
+  selector: 'app-select-plan',
+  templateUrl: './select-plan.component.html',
+  styleUrls: ['./select-plan.component.css'],
 })
-export class StepsComponent {
-  @Input() currentStep: number = 1;
+export class SelectPlanComponent {
+  @Output() previousStep = new EventEmitter<void>();
+  @Output() nextStep = new EventEmitter<void>();
 
-  steps = [
-    { number: 1, label: 'Your info', description: 'Step 1' },
-    { number: 2, label: 'Select plan', description: 'Step 2' },
-    { number: 3, label: 'Add-ons', description: 'Step 3' },
-    { number: 4, label: 'Summary', description: 'Step 4' },
-  ];
+  plan: string = 'arcade';
+  period: boolean = false;
+  monthlyPrices: string[] = ['$9/mo', '$12/mo', '$15/mo'];
+  yearlyPrices: string[] = ['$90/yr', '$120/yr', '$150/yr'];
+
+  constructor(private pricingService: PricingService) {}
+
+  togglePeriod() {
+    this.period = !this.period;
+  }
+
+  getPrice(): string {
+    return this.pricingService.getPlanPrice(this.period, this.plan);
+  }
+
+  goBack() {
+    this.previousStep.emit();
+  }
+
+  goToNextStep() {
+    this.nextStep.emit();
+  }
 }
