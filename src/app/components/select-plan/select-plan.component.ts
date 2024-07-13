@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
-import { PricingService } from '../../services/pricing.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-select-plan',
@@ -9,32 +8,42 @@ import { PricingService } from '../../services/pricing.service';
 export class SelectPlanComponent {
   @Input() plan: string = 'arcade';
   @Input() period: boolean = false;
-  @Output() previousStep = new EventEmitter<void>();
-  @Output() nextStep = new EventEmitter<void>();
   @Output() planChange = new EventEmitter<string>();
   @Output() periodChange = new EventEmitter<boolean>();
+  @Output() nextStep = new EventEmitter<void>();
+  @Output() previousStep = new EventEmitter<void>();
 
-  constructor(private pricingService: PricingService) {}
-
-  togglePeriod() {
-    this.period = !this.period;
-    this.periodChange.emit(this.period);
-  }
+  planOptions = [
+    {
+      key: 'arcade',
+      name: 'Arcade',
+      monthlyPrice: '$9/mo',
+      yearlyPrice: '$90/yr',
+      img: '/assets/images/icon-arcade.svg',
+    },
+    {
+      key: 'advanced',
+      name: 'Advanced',
+      monthlyPrice: '$12/mo',
+      yearlyPrice: '$120/yr',
+      img: '/assets/images/icon-advanced.svg',
+    },
+    {
+      key: 'pro',
+      name: 'Pro',
+      monthlyPrice: '$15/mo',
+      yearlyPrice: '$150/yr',
+      img: '/assets/images/icon-pro.svg',
+    },
+  ];
 
   selectPlan(plan: string) {
     this.plan = plan;
     this.planChange.emit(this.plan);
   }
 
-  goBack() {
-    this.previousStep.emit();
-  }
-
-  goToNextStep() {
-    this.nextStep.emit();
-  }
-
-  getPlanPrice(plan: string) {
-    return this.pricingService.getPlanPrice(this.period, plan);
+  togglePeriod() {
+    this.period = !this.period;
+    this.periodChange.emit(this.period);
   }
 }
