@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
-import { PricingService } from '../../pricing.service';
+import { PricingService } from '../../services/pricing.service';
 
 @Component({
   selector: 'app-summary',
