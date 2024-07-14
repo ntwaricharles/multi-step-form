@@ -1,7 +1,7 @@
 <div class="flex flex-col bg-white p-6 rounded-lg w-full md:max-w-2xl md:h-[100%]">
   <h1 class="text-2xl font-bold text-marine-blue mb-2">Finishing up</h1>
   <p class="text-cool-gray mb-8">Double-check everything looks OK before confirming.</p>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-2 bg-light-blue">
     <div class="flex justify-between items-center border-b py-4">
       <div>
         <p class="font-bold text-marine-blue">{{ plan | titlecase }} ({{ period ? 'Yearly' : 'Monthly' }})</p>
@@ -18,7 +18,8 @@
     <p class="text-cool-gray">Total (per {{ period ? 'year' : 'month' }})</p>
     <p class="font-bold text-purplish-blue">{{ totalPrice }}</p>
   </div>
-  <div class="flex justify-end items-center mt-8 w-full">
-    <button class="bg-marine-blue text-white py-2 px-6 rounded-lg font-medium" (click)="confirmOrder()">Confirm</button>
+    <div class="flex justify-between">
+    <button class="text-cool-gray font-medium" (click)="previousStep.emit()">Go Back</button>
+    <button class="bg-purplish-blue text-white px-6 py-2 rounded-lg font-medium" (click)="confirmOrder()">Confirm</button>
   </div>
 </div>
