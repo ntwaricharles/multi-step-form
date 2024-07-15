@@ -28,7 +28,7 @@ export class AddOnsComponent {
     }[]
   >();
 
-  toggleAddOn(index: number) {
+  toggleAddOn(index: number, event?: MouseEvent) {
     this.addOns[index].selected = !this.addOns[index].selected;
     this.addOnsChange.emit(this.addOns);
   }
