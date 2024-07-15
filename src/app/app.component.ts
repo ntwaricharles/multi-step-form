@@ -59,6 +59,6 @@ export class AppComponent {
   }
 
   finishSignup() {
-    // Handle order confirmation logic here
+    this.currentStep = 5;
   }
 }

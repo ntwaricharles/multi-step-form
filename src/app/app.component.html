@@ -76,6 +76,8 @@
         (finish)="finishSignup()"
         class="form-container"
       ></app-summary>
+       <app-thank-you *ngIf="currentStep === 5" class="form-container"></app-thank-you>
     </div>
   </div>
 </div>
+
