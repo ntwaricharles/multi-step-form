@@ -1,37 +1,37 @@
 <div class="h-screen bg-light-blue flex justify-center items-center flex-col relative">
   <div class="bg-[url('/assets/images/bg-sidebar-mobile.svg')] bg-cover w-[100%] h-[30%] bg-top flex items-start justify-center pt-8 gap-x-4 sm:hidden">
-    <div class="w-8 h-8 flex items-center justify-center rounded-full border border-white text-white font-medium">1</div>
-    <div class="w-8 h-8 flex items-center justify-center rounded-full border border-white text-white font-medium">2</div>
-    <div class="w-8 h-8 flex items-center justify-center rounded-full border border-white text-white font-medium">3</div>
-    <div class="w-8 h-8 flex items-center justify-center rounded-full border border-white text-white font-medium">4</div>
+    <div [ngClass]="{'bg-light-blue text-marine-blue': currentStep === 1, 'text-white': currentStep !== 1}" class="w-8 h-8 flex items-center justify-center rounded-full border border-white font-medium">1</div>
+    <div [ngClass]="{'bg-light-blue text-marine-blue': currentStep === 2, 'text-white': currentStep !== 2}" class="w-8 h-8 flex items-center justify-center rounded-full border border-white font-medium">2</div>
+    <div [ngClass]="{'bg-light-blue text-marine-blue': currentStep === 3, 'text-white': currentStep !== 3}" class="w-8 h-8 flex items-center justify-center rounded-full border border-white font-medium">3</div>
+    <div [ngClass]="{'bg-light-blue text-marine-blue': currentStep === 4, 'text-white': currentStep !== 4}" class="w-8 h-8 flex items-center justify-center rounded-full border border-white font-medium">4</div>
   </div>
   <div class="h-[90%] flex flex-col md:flex-row bg-transparent p-6 rounded-lg shadow-lg w-full sm:bg-white md:max-w-4xl">
     <!-- Steps Section -->
-    <section class="hidden  flex-col items-center bg-[url('/assets/images/bg-sidebar-mobile.svg')] md:items-start md:w-1/4 md:bg-[url('/assets/images/bg-sidebar-desktop.svg')] bg-cover bg-no-repeat p-6 sm:flex">
+    <section class="hidden flex-col items-center bg-[url('/assets/images/bg-sidebar-mobile.svg')] md:items-start md:w-1/4 md:bg-[url('/assets/images/bg-sidebar-desktop.svg')] bg-cover bg-no-repeat p-6 sm:flex">
       <div class="flex flex-row gap-x-7 items-center md:items-start gap-y-4 md:flex-col">
         <div class="flex items-center gap-x-4 md:gap-x-2">
-          <div class="w-8 h-8 flex items-center justify-center rounded-full border border-white text-white font-medium">1</div>
+          <div [ngClass]="{'bg-light-blue text-marine-blue': currentStep === 1, 'text-white': currentStep !== 1}" class="w-8 h-8 flex items-center justify-center rounded-full border border-white font-medium">1</div>
           <div class="hidden md:block">
             <p class="uppercase text-light-blue text-sm">Step 1</p>
             <p class="uppercase text-white text-sm font-bold tracking-wide">Your info</p>
           </div>
         </div>
         <div class="flex items-center gap-x-4 md:gap-x-2">
-          <div class="w-8 h-8 flex items-center justify-center rounded-full border border-white text-white font-medium">2</div>
+          <div [ngClass]="{'bg-light-blue text-marine-blue': currentStep === 2, 'text-white': currentStep !==2}" class="w-8 h-8 flex items-center justify-center rounded-full border border-white font-medium">2</div>
           <div class="hidden md:block">
             <p class="uppercase text-light-blue text-sm">Step 2</p>
             <p class="uppercase text-white text-sm font-bold tracking-wide">Select plan</p>
           </div>
         </div>
         <div class="flex items-center gap-x-4 md:gap-x-2">
-          <div class="w-8 h-8 flex items-center justify-center rounded-full border border-white text-white font-medium">3</div>
+          <div [ngClass]="{'bg-light-blue text-marine-blue': currentStep === 3, 'text-white': currentStep !== 3}" class="w-8 h-8 flex items-center justify-center rounded-full border border-white font-medium">3</div>
           <div class="hidden md:block">
             <p class="uppercase text-light-blue text-sm">Step 3</p>
             <p class="uppercase text-white text-sm font-bold tracking-wide">Add-ons</p>
           </div>
         </div>
         <div class="flex items-center gap-x-4 md:gap-x-2">
-          <div class="w-8 h-8 flex items-center justify-center rounded-full border border-white text-white font-medium">4</div>
+          <div [ngClass]="{'bg-light-blue text-marine-blue': currentStep === 4, 'text-white': currentStep !==4}" class="w-8 h-8 flex items-center justify-center rounded-full border border-white font-medium">4</div>
           <div class="hidden md:block">
             <p class="uppercase text-light-blue text-sm">Step 4</p>
             <p class="uppercase text-white text-sm font-bold tracking-wide">Summary</p>
@@ -80,4 +80,3 @@
     </div>
   </div>
 </div>
-

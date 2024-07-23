@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-personal-info-form',
@@ -9,13 +9,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PersonalInfoFormComponent {
   @Output() nextStep = new EventEmitter<void>();
 
-  personalInfoForm: FormGroup; 
+  personalInfoForm: FormGroup;
+  formSubmitted: boolean = false;
 
   constructor(private formBuilder: FormBuilder) {
     this.personalInfoForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required],
+      phoneNumber: [
+        '',
+        [Validators.required, Validators.pattern(/^\d{10,15}$/)],
+      ],
     });
   }
 
@@ -31,6 +35,7 @@ export class PersonalInfoFormComponent {
   }
 
   goToNextStep() {
+    this.formSubmitted = true;
     if (this.personalInfoForm.valid) {
       this.nextStep.emit();
     } else {

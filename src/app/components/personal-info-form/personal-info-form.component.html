@@ -3,29 +3,51 @@
   <p class="text-cool-gray mb-8">Please provide your name, email address, and phone number.</p>
   
   <form [formGroup]="personalInfoForm" class="w-full">
-    <div class="flex flex-col gap-1 relative mb-6">
+    <div class="flex flex-col relative mb-6">
       <label for="name" class="text-marine-blue font-medium">Name</label>
-      <input id="name" formControlName="name" placeholder="e.g. Stephen King"
-        class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
-      />
-      <p *ngIf="personalInfoForm.controls['name'].invalid && (personalInfoForm.controls['name'].dirty || personalInfoForm.controls['name'].touched)"
-         class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
+      <div class="relative">
+        <input id="name" formControlName="name" placeholder="e.g. Stephen King"
+          [ngClass]="{
+            'border-strawberry-red': formSubmitted && name?.invalid,
+            'border-light-gray': !(formSubmitted && name?.invalid)
+          }"
+          class="border rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
+        />
+        <p *ngIf="formSubmitted && name?.errors?.['required']"
+           class="text-strawberry-red font-semibold text-sm absolute bottom-[-1.5rem] left-0">This field is required</p>
+      </div>
     </div>
-    <div class="flex flex-col gap-1 relative mb-6">
+    <div class="flex flex-col relative mb-6">
       <label for="email" class="text-marine-blue font-medium">Email Address</label>
-      <input id="email" formControlName="email" placeholder="e.g. stephenking@lorem.com" type="email"
-        class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
-      />
-      <p *ngIf="personalInfoForm.controls['email'].invalid && (personalInfoForm.controls['email'].dirty || personalInfoForm.controls['email'].touched)"
-         class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
+      <div class="relative">
+        <input id="email" formControlName="email" placeholder="e.g. stephenking@lorem.com" type="email"
+          [ngClass]="{
+            'border-strawberry-red': formSubmitted && email?.invalid,
+            'border-light-gray': !(formSubmitted && email?.invalid)
+          }"
+          class="border rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
+        />
+        <p *ngIf="formSubmitted && email?.errors?.['required']"
+           class="text-strawberry-red font-semibold text-sm absolute bottom-[-1.5rem] left-0">This field is required</p>
+        <p *ngIf="formSubmitted && email?.errors?.['email']"
+           class="text-strawberry-red font-semibold text-sm absolute bottom-[-1.5rem] left-0">Must be a valid email address</p>
+      </div>
     </div>
-    <div class="flex flex-col gap-1 relative mb-6">
+    <div class="flex flex-col relative mb-6">
       <label for="number" class="text-marine-blue font-medium">Phone Number</label>
-      <input id="number" formControlName="phoneNumber" placeholder="e.g. +1 234 567 890"
-        class="border border-light-gray rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
-      />
-      <p *ngIf="personalInfoForm.controls['phoneNumber'].invalid && (personalInfoForm.controls['phoneNumber'].dirty || personalInfoForm.controls['phoneNumber'].touched)"
-         class="text-strawberry-red font-semibold text-sm absolute top-1 right-3">This field is required</p>
+      <div class="relative">
+        <input id="number" formControlName="phoneNumber" placeholder="e.g. +1 234 567 890"
+          [ngClass]="{
+            'border-strawberry-red': formSubmitted && phoneNumber?.invalid,
+            'border-light-gray': !(formSubmitted && phoneNumber?.invalid)
+          }"
+          class="border rounded-lg px-4 py-3 text-marine-blue font-medium text-lg w-full hover:border-purplish-blue focus:outline-none focus:border-purplish-blue"
+        />
+        <p *ngIf="formSubmitted && phoneNumber?.errors?.['required']"
+           class="text-strawberry-red font-semibold text-sm absolute bottom-[-1.5rem] left-0">This field is required</p>
+        <p *ngIf="formSubmitted && phoneNumber?.errors?.['pattern']"
+           class="text-strawberry-red font-semibold text-sm absolute bottom-[-1.5rem] left-0">Must be a valid phone number (10-15 digits)</p>
+      </div>
     </div>
     <div class="md:hidden flex justify-end items-center absolute left-0 py-2 px-6 bottom-0 bg-white md:mt-8 w-full">
       <button type="button" class="bg-marine-blue text-white py-2 px-6 rounded-lg font-medium" (click)="goToNextStep()">Next Step</button>
